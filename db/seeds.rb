@@ -9,3 +9,7 @@
 
 Product.create(name: "Burger", price: 5, description: "100% grass fed beef")
 
+Product.create(name: "Fries", price: 3, description: "sweet potato!")
+
+Product.create(name: "Coke", price: 2, description: "better than pepsi")
+

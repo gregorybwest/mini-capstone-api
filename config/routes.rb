@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  get "/display_product", controller: "products", action: "display_product"
+  get "/products" => "products#index"
+  get "/products/:id" => "products#show"
 end
+
+
