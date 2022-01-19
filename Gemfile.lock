@@ -46,6 +46,11 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_model_serializers (0.10.13)
+      actionpack (>= 4.1, < 7.1)
+      activemodel (>= 4.1, < 7.1)
+      case_transform (>= 0.2)
+      jsonapi-renderer (>= 0.1.1.beta1, < 0.3)
     activejob (7.0.1)
       activesupport (= 7.0.1)
       globalid (>= 0.3.6)
@@ -71,6 +76,8 @@ GEM
     bootsnap (1.9.4)
       msgpack (~> 1.0)
     builder (3.2.4)
+    case_transform (0.2)
+      activesupport
     concurrent-ruby (1.1.9)
     crass (1.0.6)
     debug (1.4.0)
@@ -100,6 +107,7 @@ GEM
     io-wait (0.2.1)
     irb (1.4.1)
       reline (>= 0.3.0)
+    jsonapi-renderer (0.2.2)
     llhttp-ffi (0.4.0)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
@@ -137,6 +145,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
+    rack-cors (1.1.1)
+      rack (>= 2.0.0)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (7.0.1)
@@ -168,6 +178,9 @@ GEM
     rake (13.0.6)
     reline (0.3.1)
       io-console (~> 0.5)
+    seed_dump (3.3.1)
+      activerecord (>= 4)
+      activesupport (>= 4)
     strscan (3.0.1)
     thor (1.2.1)
     timeout (0.2.0)
@@ -185,12 +198,15 @@ PLATFORMS
   arm64-darwin-20
 
 DEPENDENCIES
+  active_model_serializers (~> 0.10.0)
   bootsnap
   debug
   http
   pg (~> 1.1)
   puma (~> 5.0)
+  rack-cors
   rails (~> 7.0.1)
+  seed_dump
   tzinfo-data
 
 RUBY VERSION

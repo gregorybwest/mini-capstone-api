@@ -1,0 +1,30 @@
+
+###Products index
+GET http://localhost:3000/products
+
+###Products show
+GET http://localhost:3000/products/4
+
+###Products create
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+  "name": "lettuce",
+  "price": "1",
+  "image_url": null,
+  "description": "healthy!",
+  "inventory": 200
+}
+
+### Products update
+PATCH http://localhost:3000/products/3
+Content-Type: application/json
+
+{
+  
+ 
+  "description": "with garlic!"
+}
+### Products Destroy
+DELETE http://localhost:3000/products/8
