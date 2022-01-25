@@ -1,6 +1,16 @@
 class ProductsController < ApplicationController
   def index
     products = Product.all
+    if params[:search]
+      products = products.where("name iLike '%#{params[:search]}%'")
+    end
+    if params[:sort] == "price"
+      products = products.order(:price)
+    end
+    if params[:sort_order]
+      products = products.order(price: :desc)
+    end
+    products = products.order(:id)
     render json: products
   end
 
@@ -8,7 +18,6 @@ class ProductsController < ApplicationController
     product = Product.new(
       name: params[:name],
       price: params[:price],
-      image_url: params[:image_url],
       description: params[:description],
       inventory: params[:inventory]
     )
@@ -21,7 +30,7 @@ class ProductsController < ApplicationController
 
   def show
     product = Product.find(params[:id])
-    render json: product
+    render json: {product: product, current_user: current_user}
   end
 
   def update
@@ -30,7 +39,6 @@ class ProductsController < ApplicationController
     # update unless nill passed in 
     product.name = params[:name] || product.name
     product.price = params[:price] || product.price
-    product.image_url = params[:image_url] || product.image_url
     product.description = params[:description] || product.description
     #save the changes
     if product.save

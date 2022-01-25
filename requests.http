@@ -1,9 +1,11 @@
 
 ###Products index
-GET http://localhost:3000/products
+GET http://localhost:3000/products?price=3
 
-###Products show
+###Products show  
 GET http://localhost:3000/products/4
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2NDMxNDE3Nzh9.u3nXy1r-YulssfLV7_nol61BmPJkmn4UGRlCMMVniPg
+
 
 ###Products create
 POST http://localhost:3000/products
@@ -28,3 +30,26 @@ Content-Type: application/json
 }
 ### Products Destroy
 DELETE http://localhost:3000/products/8
+
+
+
+### Users create (signup)
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "Romeo",
+  "email": "romeo@gmail.com",
+  "password": "password",
+  "password_confirmation": "password"
+}
+
+
+### Sessions create (login)
+POST http://localhost:3000/sessions
+Content-Type: application/json
+
+{
+  "email": "goon@gmail.com",
+  "password": "password"
+}
