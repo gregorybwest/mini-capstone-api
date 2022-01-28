@@ -13,7 +13,11 @@ class ProductsController < ApplicationController
     if params[:sort_order]
       products = products.order(price: :desc)
     end
-    products = products.order(:id)
+    # products = products.order(:id)
+    if params[:category]
+      category = Category.find_by(name: params[:category])
+      products = category.products
+    end
     render json: products
   end
 
