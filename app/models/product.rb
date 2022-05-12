@@ -4,15 +4,11 @@ class Product < ApplicationRecord
   validates :name, uniqueness: true
   validates :price, numericality: { greater_than: 0 }
   validates :description, length: { in: 6..300 }
-  # validates :image, allow_blank: true, format: { with: %r{.(gif|jpg|png)\Z}i, message: 'must be a URL for GIF, JPG or PNG image.' }
-
-  # def supplier
-  #   Supplier.find(supplier_id)
-  # end
-
+ 
   belongs_to :supplier
   has_many :images
-  has_many :orders
+  has_many :carted_products 
+  has_many :orders, through: :carted_products
   has_many :product_categories
   has_many :categories, through: :product_categories 
 
@@ -32,6 +28,14 @@ class Product < ApplicationRecord
 
   def total
     price + tax
+  end
+
+  def supplier
+    Supplier.find_by(id: supplier_id)
+  end
+
+  def images
+    Image.where(product_id: id)
   end
 
 end
